@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InteractWithPeople</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <div class="sidebar">
+        <div class="sidebar-section">
+            <h3>🟢 Online Users</h3>
+            <ul id="users"></ul>
+        </div>
+
+        <div class="sidebar-section disconnected">
+            <h3>🔴 Disconnected Users</h3>
+            <ul id="disconnectedUsers"></ul>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>🚀 Actions</h3>
+            <div class="welcome-actions">
+                <button onclick="startChat()">Start Chat</button>
+                <button onclick="startPoll()">Start Poll</button>
+                <button onclick="openFilePortal()">Share Files</button>
+                <button id="askAIBtn" onclick="askAI()">🤖 Ask AI</button>
+                <button onclick="leaveChat()" class="leave-button">Disconnect</button>
+                <button id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat">
+
+        <div class="header">
+            🌍 Start Intracting With
+            <span id="status">People</span>
+        </div>
+
+        <div id="welcomePanel" class="welcomePanel">
+            <h3>Welcome To My Knowledge Area</h3>
+
+        </div>
+
+        <div class="topBar">
+            <div class="input">
+                <input id="message" placeholder="Type message..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+
+            <div class="translate-panel">
+                <label for="languageSelect">Translate chat</label>
+                <select id="languageSelect" onchange="setLanguage()">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                </select>
+                <span id="translationStatus">Current: English</span>
+            </div>
+
+            <div id="chatControls" class="chatControls">
+                <input type="file" id="fileInput" />
+                <button onclick="uploadFile()">Upload File</button>
+                <button onclick="leaveChat()" class="leave-button">Leave Chat</button>
+            </div>
+        </div>
+
+        <div id="pollPanel" class="panel">
+            <h3>Start a Poll</h3>
+            <input id="pollQuestion" placeholder="Poll question" />
+            <input id="pollOption1" placeholder="Option 1" />
+            <input id="pollOption2" placeholder="Option 2" />
+            <button onclick="createPoll()">Create Poll</button>
+            <div id="pollResults" class="poll-results"></div>
+        </div>
+
+        <div id="filePortal" class="panel">
+            <h3>File Sharing Portal</h3>
+            <p>Upload files directly to the chat from this portal.</p>
+            <input type="file" id="fileInputPortal" onchange="updateFileDetails(this.files[0])" />
+            <button onclick="uploadFilePortal()">Share File</button>
+            <div id="fileDetails" class="file-details">
+                <p><strong>File Name:</strong> <span id="fileName">None</span></p>
+                <p><strong>File Type:</strong> <span id="fileType">None</span></p>
+                <p><strong>File Size:</strong> <span id="fileSize">0 KB</span></p>
+            </div>
+            <div id="portalStatus" class="portal-status"></div>
+        </div>
+
+        <div id="typing" class="typing"></div>
+
+        <div id="messages" class="messages"></div>
+
+        <footer class="app-footer">
+            <div class="footer-item">
+                <h4>Contact</h4>
+                <p>Phone: +91 7389796751</p>
+                <p>Email: support@globallearnpro.com</p>
+            </div>
+            <div class="footer-item">
+                <h4>Address</h4>
+                <p>23 GEC Chouk</p>
+                <p>Sejbahar Raipur, Chhattisgarh 492015</p>
+            </div>
+            <div class="footer-item footer-copy">
+                <h4>Copyright</h4>
+                <p>© 2026 Global Learn Pro</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+    
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
